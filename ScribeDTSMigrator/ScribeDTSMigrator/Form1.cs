@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Xml;
+using System.Web.Script.Serialization;
 
 
 namespace ScribeDTSMigrator
@@ -17,7 +18,9 @@ namespace ScribeDTSMigrator
     public partial class Form1 : Form
     {
         XmlDocument xDoc;
-        string path;        
+        string path;
+        string jsonPath;
+        
 
         public Form1()
         {
@@ -36,9 +39,7 @@ namespace ScribeDTSMigrator
         {
             OpenFileDialog dlg = new OpenFileDialog();
             dlg.DefaultExt = ".dts";
-            //dlg.Filter = "Text documents (.txt)|*.txt";
-
-            //Nullable<bool> result = dlg.ShowDialog();
+            
 
             if (dlg.ShowDialog() == DialogResult.OK)
             {
@@ -47,10 +48,8 @@ namespace ScribeDTSMigrator
                 xDoc.Load(path);
                 textBox1.Text = dlg.FileName;
                 
-                //textBox2.Text = System.IO.File.ReadAllText(dlg.FileName);
-
             }
-            //return dlg.FileName;
+            
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -99,5 +98,40 @@ namespace ScribeDTSMigrator
             
 
         }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void loadConnectionFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            loadJson();            
+            
+        }
+        public void loadJson()
+        {
+            OpenFileDialog jsonFile = new OpenFileDialog();
+            jsonFile.DefaultExt = ".json";
+            //dlg.Filter = "Text documents (.txt)|*.txt";
+
+            //Nullable<bool> result = dlg.ShowDialog();
+
+            if (jsonFile.ShowDialog() == DialogResult.OK)
+            {
+                jsonPath = jsonFile.FileName;
+
+            }
+            string jsonFilePath = jsonPath;
+            string scribeConnections = File.ReadAllText(jsonFilePath);
+            JavaScriptSerializer serializer = new JavaScriptSerializer();
+            var deserializedResults = serializer.Deserialize<List<ScribeAdapaters>>(scribeConnections);
+        }
     }
+    public class ScribeAdapaters
+    {
+        public string Label { get; set; }
+        public string ID { get; set; }
+    }
+   
 }

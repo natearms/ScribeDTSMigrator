@@ -35,12 +35,22 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.openFile = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.filePath = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.fileName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.connectionLabel = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.connectionGUID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.destinationFilePath = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.destinationFileName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.replaceLabel = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.replaceGUID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.loadConnectionFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // commitChange
             // 
-            this.commitChange.Location = new System.Drawing.Point(12, 322);
+            this.commitChange.Location = new System.Drawing.Point(12, 414);
             this.commitChange.Name = "commitChange";
             this.commitChange.Size = new System.Drawing.Size(131, 45);
             this.commitChange.TabIndex = 0;
@@ -54,17 +64,19 @@
             this.toolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(702, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1096, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.loadConnectionFileToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(37, 20);
             this.toolStripMenuItem1.Text = "File";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // exitToolStripMenuItem
             // 
@@ -75,7 +87,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 56);
+            this.textBox1.Location = new System.Drawing.Point(12, 27);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(546, 20);
             this.textBox1.TabIndex = 3;
@@ -83,7 +95,7 @@
             // 
             // openFile
             // 
-            this.openFile.Location = new System.Drawing.Point(565, 56);
+            this.openFile.Location = new System.Drawing.Point(565, 27);
             this.openFile.Name = "openFile";
             this.openFile.Size = new System.Drawing.Size(75, 23);
             this.openFile.TabIndex = 4;
@@ -93,18 +105,83 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(23, 106);
-            this.textBox2.Multiline = true;
+            this.textBox2.Location = new System.Drawing.Point(12, 53);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(316, 102);
+            this.textBox2.Size = new System.Drawing.Size(546, 20);
             this.textBox2.TabIndex = 5;
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            // 
+            // listView1
+            // 
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.filePath,
+            this.fileName,
+            this.connectionLabel,
+            this.connectionGUID,
+            this.destinationFilePath,
+            this.destinationFileName,
+            this.replaceLabel,
+            this.replaceGUID});
+            this.listView1.Location = new System.Drawing.Point(12, 80);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(1072, 256);
+            this.listView1.TabIndex = 6;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            // 
+            // filePath
+            // 
+            this.filePath.Text = "File Path";
+            this.filePath.Width = 114;
+            // 
+            // fileName
+            // 
+            this.fileName.Text = "File Name";
+            this.fileName.Width = 116;
+            // 
+            // connectionLabel
+            // 
+            this.connectionLabel.Text = "Connection Label";
+            this.connectionLabel.Width = 156;
+            // 
+            // connectionGUID
+            // 
+            this.connectionGUID.Text = "Connection GUID";
+            this.connectionGUID.Width = 117;
+            // 
+            // destinationFilePath
+            // 
+            this.destinationFilePath.Text = "Destination File Path";
+            this.destinationFilePath.Width = 128;
+            // 
+            // destinationFileName
+            // 
+            this.destinationFileName.Text = "Destination File Name";
+            this.destinationFileName.Width = 134;
+            // 
+            // replaceLabel
+            // 
+            this.replaceLabel.Text = "Replace Label";
+            this.replaceLabel.Width = 110;
+            // 
+            // replaceGUID
+            // 
+            this.replaceGUID.Text = "Replace GUID";
+            this.replaceGUID.Width = 108;
+            // 
+            // loadConnectionFileToolStripMenuItem
+            // 
+            this.loadConnectionFileToolStripMenuItem.Name = "loadConnectionFileToolStripMenuItem";
+            this.loadConnectionFileToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.loadConnectionFileToolStripMenuItem.Text = "Load Connection File";
+            this.loadConnectionFileToolStripMenuItem.Click += new System.EventHandler(this.loadConnectionFileToolStripMenuItem_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(702, 379);
+            this.ClientSize = new System.Drawing.Size(1096, 471);
+            this.Controls.Add(this.listView1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.openFile);
             this.Controls.Add(this.textBox1);
@@ -129,6 +206,16 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button openFile;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ColumnHeader filePath;
+        private System.Windows.Forms.ColumnHeader fileName;
+        private System.Windows.Forms.ColumnHeader connectionLabel;
+        private System.Windows.Forms.ColumnHeader connectionGUID;
+        private System.Windows.Forms.ColumnHeader destinationFilePath;
+        private System.Windows.Forms.ColumnHeader destinationFileName;
+        private System.Windows.Forms.ColumnHeader replaceLabel;
+        private System.Windows.Forms.ColumnHeader replaceGUID;
+        private System.Windows.Forms.ToolStripMenuItem loadConnectionFileToolStripMenuItem;
     }
 }
 

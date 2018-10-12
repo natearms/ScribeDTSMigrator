@@ -31,6 +31,7 @@
             this.commitChange = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadConnectionFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.openFile = new System.Windows.Forms.Button();
@@ -44,8 +45,13 @@
             this.destinationFileName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.replaceLabel = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.replaceGUID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.loadConnectionFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.generateListView = new System.Windows.Forms.Button();
+            this.listView2 = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // commitChange
@@ -78,10 +84,17 @@
             this.toolStripMenuItem1.Text = "File";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
+            // loadConnectionFileToolStripMenuItem
+            // 
+            this.loadConnectionFileToolStripMenuItem.Name = "loadConnectionFileToolStripMenuItem";
+            this.loadConnectionFileToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.loadConnectionFileToolStripMenuItem.Text = "Load Connection File";
+            this.loadConnectionFileToolStripMenuItem.Click += new System.EventHandler(this.loadConnectionFileToolStripMenuItem_Click);
+            // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -124,7 +137,7 @@
             this.replaceGUID});
             this.listView1.Location = new System.Drawing.Point(12, 80);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(1072, 256);
+            this.listView1.Size = new System.Drawing.Size(1072, 102);
             this.listView1.TabIndex = 6;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -169,18 +182,52 @@
             this.replaceGUID.Text = "Replace GUID";
             this.replaceGUID.Width = 108;
             // 
-            // loadConnectionFileToolStripMenuItem
+            // generateListView
             // 
-            this.loadConnectionFileToolStripMenuItem.Name = "loadConnectionFileToolStripMenuItem";
-            this.loadConnectionFileToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.loadConnectionFileToolStripMenuItem.Text = "Load Connection File";
-            this.loadConnectionFileToolStripMenuItem.Click += new System.EventHandler(this.loadConnectionFileToolStripMenuItem_Click);
+            this.generateListView.Location = new System.Drawing.Point(185, 353);
+            this.generateListView.Name = "generateListView";
+            this.generateListView.Size = new System.Drawing.Size(118, 23);
+            this.generateListView.TabIndex = 7;
+            this.generateListView.Text = "Generate List View";
+            this.generateListView.UseVisualStyleBackColor = true;
+            this.generateListView.Click += new System.EventHandler(this.generateListView_Click);
+            // 
+            // listView2
+            // 
+            this.listView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2});
+            this.listView2.Location = new System.Drawing.Point(840, 226);
+            this.listView2.Name = "listView2";
+            this.listView2.Size = new System.Drawing.Size(223, 165);
+            this.listView2.TabIndex = 8;
+            this.listView2.UseCompatibleStateImageBehavior = false;
+            this.listView2.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Width = 102;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Width = 113;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(400, 204);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(376, 203);
+            this.dataGridView1.TabIndex = 9;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1096, 471);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.listView2);
+            this.Controls.Add(this.generateListView);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.openFile);
@@ -192,6 +239,7 @@
             this.Text = "Form1";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -216,6 +264,11 @@
         private System.Windows.Forms.ColumnHeader replaceLabel;
         private System.Windows.Forms.ColumnHeader replaceGUID;
         private System.Windows.Forms.ToolStripMenuItem loadConnectionFileToolStripMenuItem;
+        private System.Windows.Forms.Button generateListView;
+        private System.Windows.Forms.ListView listView2;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 

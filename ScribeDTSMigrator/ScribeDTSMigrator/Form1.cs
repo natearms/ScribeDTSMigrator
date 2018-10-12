@@ -18,9 +18,10 @@ namespace ScribeDTSMigrator
     public partial class Form1 : Form
     {
         XmlDocument xDoc;
+        OpenFileDialog jsonFile;
         string path;
-        string jsonPath;
-        
+        List<ScribeAdapaters> sa;
+               
 
         public Form1()
         {
@@ -106,26 +107,43 @@ namespace ScribeDTSMigrator
 
         private void loadConnectionFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            loadJson();            
+            
+           sa = serializeJson(loadJson());
             
         }
-        public void loadJson()
+        public string loadJson()
         {
-            OpenFileDialog jsonFile = new OpenFileDialog();
+            jsonFile = new OpenFileDialog();
             jsonFile.DefaultExt = ".json";
-            //dlg.Filter = "Text documents (.txt)|*.txt";
-
-            //Nullable<bool> result = dlg.ShowDialog();
-
+            string jsonPath="";
+            
             if (jsonFile.ShowDialog() == DialogResult.OK)
             {
                 jsonPath = jsonFile.FileName;
-
+                
             }
-            string jsonFilePath = jsonPath;
+
+            return jsonPath;
+        }
+        public List<ScribeAdapaters> serializeJson(string jsonFilePath)
+        {
             string scribeConnections = File.ReadAllText(jsonFilePath);
             JavaScriptSerializer serializer = new JavaScriptSerializer();
             var deserializedResults = serializer.Deserialize<List<ScribeAdapaters>>(scribeConnections);
+            return deserializedResults;
+        }
+
+        private void generateListView_Click(object sender, EventArgs e)
+        {
+            listView2.View = View.Details;
+           
+            foreach (ScribeAdapaters value in sa)
+            {
+                listView2.Items.Add(new ListViewItem(new string[] { value.Label, value.ID }));
+            }
+
+            dataGridView1.DataSource = sa;
+           
         }
     }
     public class ScribeAdapaters
